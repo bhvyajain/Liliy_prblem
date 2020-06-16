@@ -1,0 +1,31 @@
+
+<mat-card>
+  <mat-spinner *ngIf='isLoading'></mat-spinner>
+ 
+    <form (submit)="onSubmit(Days)" #Days="ngForm" *ngIf="!isview">
+      <mat-form-field>
+        <input
+        matInput
+        type="Startend"
+      ngModel
+        placeholder="Enter first Day and last Day and Lucky Factor with space"
+        name="Startend"
+        #Startend="ngModel"
+        required>  
+      <mat-error *ngIf="Startend.invalid">Please enter a valid Number.</mat-error>
+    </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit" *ngIf='!isLoading'>Submit</button>  
+      </form>
+   
+      <mat-card>
+        <p> The total Beautiful Days are :{{final}} </p>
+        <button
+        mat-raised-button
+        color="accent"
+        type="submit" *ngIf='isview' (click)="Destroy()">Reset</button> 
+      </mat-card>
+
+  </mat-card>
